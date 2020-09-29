@@ -1,6 +1,7 @@
 # RiceBook
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.<br>
+Facebook-like web APP, which can realize login, posting blogs, commenting blogs, adding friends, searching posts, etc.
 
 ## Go to the Website
 * Url: http://numerous-rice.surge.sh/
