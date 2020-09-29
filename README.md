@@ -6,6 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * Url: http://numerous-rice.surge.sh/
 * Test username: jf58
 * Tset password: 123
+* Backend deployed on: https://jf58ricebook.herokuapp.com/
 
 ## Development server
 
