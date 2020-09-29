@@ -1,0 +1,158 @@
+
+<h3>Register For An Account</h3>
+
+<form  #registerForm="ngForm">
+  <div class="form-group">
+    <label for="AN">Account Name:</label>
+    <input class="form-control"
+           id="AN" type="text" placeholder="Account Name"
+           required
+           [(ngModel)]="userModel.account" name="account"
+           #account='ngModel'
+           pattern="^[A-Za-z]|[A-Za-z][a-zA-Z0-9]+$">
+    <div *ngIf="account.invalid && (account.dirty || account.touched)"
+         class="alert alert-danger">
+      <div *ngIf="account.errors.required">
+        Account Name is required.
+      </div>
+      <div *ngIf="account.errors.pattern">
+        Must be letters or a combination of letters and numbers, cannot begin with a number.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="DN">Display Name:</label>
+    <input class="form-control"
+           id="DN" type="text" placeholder="Display Name(optional)"
+           [(ngModel)]="userModel.display" name="display"
+           #display='ngModel'
+    >
+  </div>
+  <div class="form-group">
+    <label for="EA">Email Address:</label>
+    <input class="form-control"
+           id="EA" type="text" placeholder="Email Address"
+           required
+           [(ngModel)]="userModel.email" name="email"
+           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+           #email='ngModel'>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+         class="alert alert-danger">
+      <div *ngIf="email.errors.required">
+        Email Address is required.
+      </div>
+      <div *ngIf="email.errors.pattern && !email.errors.required">
+        Please enter a valid email address.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="PN">Phone Number:</label>
+    <input class="form-control"
+           id="PN" type="text" placeholder="111-111-1111(-required)"
+           name="phone"
+           required
+           pattern="\d\d\d-\d\d\d-\d\d\d\d"
+           [(ngModel)]="userModel.phone"
+           #phone='ngModel'
+    >
+    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+         class="alert alert-danger">
+      <div *ngIf="phone.errors.required">
+        Phone Number is required.
+      </div>
+      <div *ngIf="phone.errors.pattern && !phone.errors.required">
+        Phone Number must be numbers and entered in 111-111-1111 format.
+      </div>
+  </div>
+  </div>
+  <div class="form-group">
+    <label for="DB">Date of Birth:</label>
+    <input class="form-control"
+           id="DB" type="date"
+           name="date"
+           required
+           [(ngModel)]="userModel.birth"
+           #date="ngModel"
+           [appDobValidate]="userModel.birth"
+    >
+    <div *ngIf="date.invalid && (date.dirty || date.touched)"
+         class="alert alert-danger">
+      <div *ngIf="date.errors.required">
+        Date of Birth is required.
+      </div>
+      <div *ngIf="date.errors.dob && !date.errors.required">
+        Only adults over 18 can register.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="ZC">Zip Code:</label>
+    <input class="form-control"
+           id="ZC" type="text" placeholder="11111"
+           name="zip"
+           required pattern="\d{5}"
+           [(ngModel)]="userModel.Zip"
+           #zip="ngModel"
+           >
+    <div *ngIf="zip.invalid && (zip.dirty || zip.touched)"
+         class="alert alert-danger">
+      <div *ngIf="zip.errors.required">
+        Zip Code is required.
+      </div>
+      <div *ngIf="zip.errors.pattern && !zip.errors.required">
+        Zip Code Must Be Five-digit Number.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="PW">Password:</label>
+    <input class="form-control"
+           id="PW" type="password"
+           placeholder="Your Password"
+           name="password"
+           required
+           [appPwdValidate]="userModel.rePwd"
+           [(ngModel)]="userModel.pwd"
+           #password='ngModel'
+    >
+    <div *ngIf="password.invalid && (password.dirty || password.touched)"
+         class="alert alert-danger">
+      <div *ngIf="password.errors.required">
+        Password is required.
+      </div>
+      <div *ngIf="password.errors.confirmpsw && !password.errors.required">
+        Two inconsistent passwords.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="CP">Confirm Password:</label>
+    <input class="form-control"
+           id="CP" type="password" placeholder="Confirm Your Password"
+           name="confirm"
+           required
+           [(ngModel)]="userModel.rePwd"
+           #confirm='ngModel'
+           [appPwdValidate]="userModel.pwd"
+    >
+    <div *ngIf="confirm.invalid && (confirm.dirty || confirm.touched)"
+         class="alert alert-danger">
+      <div *ngIf="confirm.errors.required">
+        Confirm Password is required.
+      </div>
+      <div *ngIf="confirm.errors.confirmpsw && !confirm.errors.required">
+        Two inconsistent passwords.
+      </div>
+    </div>
+  </div>
+  <input id="TS" type="hidden" name="timestamp">
+  <div style="text-align: center">
+  <input id="SB" type="submit" [disabled]="registerForm.form.invalid" value="Submit" (click)="register_submit()">
+  </div>
+  <hr>
+  <div style="text-align: center">
+    <input type="reset" value="Reset">
+  </div>
+</form>
+

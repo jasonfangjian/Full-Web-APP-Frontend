@@ -1,0 +1,161 @@
+<div class="main_profile">
+  <div class="page-header">
+    <h1 class="title">RiceBook </h1>
+    <ul class="mainHead">
+      <li><button  id="back" value="Main Page" routerLink="/main/{{username}}">Main Page</button></li>
+    </ul>
+  </div>
+  <div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="origin">
+        <div class="res">
+          <img src="{{source}}" alt="img"/>
+          <div class="update_img">
+            <input id="imgfile" type="file" accept="image/*" id = 'addImg'>
+            <button class="btn btn-primary" id="confirmImg" (click)="ConfirmImg()">Submit</button>
+          </div>
+          <table class="profile_info">
+            <tr>
+              <td>Username: </td>
+              <td>{{username}}</td>
+            </tr>
+            <tr>
+              <td>Email: </td>
+              <td>{{email}}</td>
+            </tr>
+<!--            <tr>-->
+<!--              <td>Phone Number: </td>-->
+<!--              <td>{{phone}}</td>-->
+<!--            </tr>-->
+            <tr>
+              <td>Zip Code: </td>
+              <td>{{zipcode}}</td>
+            </tr>
+            <tr>
+              <td>BirthDay: </td>
+              <td>{{displayPsw}}</td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="change">
+        <div class="res">
+          <h3>Update Profile</h3>
+
+          <form  #updateForm="ngForm">
+            <div class="form-group">
+              <label for="AN">User name:</label>
+              <input class="form-control"
+                     id="AN" type="text" placeholder="User name"
+                     [(ngModel)]="user_Profile.username" name="account"
+                     #account='ngModel'
+                     pattern="^[A-Za-z]|[A-Za-z][a-zA-Z0-9]+$">
+              <div *ngIf="account.invalid && (account.dirty || account.touched)"
+                   class="alert alert-danger">
+                <div *ngIf="account.errors.pattern">
+                  Must be letters or a combination of letters and numbers, cannot begin with a number.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="EA">Email Address:</label>
+              <input class="form-control"
+                     id="EA" type="text" placeholder="Email Address"
+                     [(ngModel)]="user_Profile.email" name="email"
+                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                     #Email='ngModel'>
+              <div *ngIf="Email.invalid && (Email.dirty || Email.touched)"
+                   class="alert alert-danger">
+                <div *ngIf="Email.errors.pattern && !Email.errors.required">
+                  Please enter a valid email address.
+                </div>
+                </div>
+
+              </div>
+            <div class="form-group">
+              <label for="PN">Phone Number:</label>
+              <input class="form-control"
+                     id="PN" type="text" placeholder="111-111-1111(-required)"
+                     name="phone"
+                     pattern="\d\d\d-\d\d\d-\d\d\d\d"
+                     [(ngModel)]="user_Profile.phonenum"
+                     #Phone='ngModel'
+              >
+              <div *ngIf="Phone.invalid && (Phone.dirty || Phone.touched)"
+                   class="alert alert-danger">
+                <div *ngIf="Phone.errors.pattern && !Phone.errors.required">
+                  Phone Number must be numbers and entered in 111-111-1111 format.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ZC">Zip Code:</label>
+              <input class="form-control"
+                     id="ZC" type="text" placeholder="11111"
+                     name="zip"
+                     pattern="\d{5}"
+                     [(ngModel)]="user_Profile.zipcode"
+                     #zip="ngModel"
+              >
+              <div *ngIf="zip.invalid && (zip.dirty || zip.touched)"
+                   class="alert alert-danger">
+                <div *ngIf="zip.errors.pattern && !zip.errors.required">
+                  Zip Code Must Be Five-digit Number.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="PW">Password:</label>
+              <input class="form-control"
+                     id="PW" type="password"
+                     placeholder="Your Password"
+                     name="password"
+                     [(ngModel)]="user_Profile.psw"
+                     #password='ngModel'
+              >
+            </div>
+            <div class="form-group">
+              <label for="CP">Confirm Password:</label>
+              <input class="form-control"
+                     id="CP" type="password" placeholder="Confirm Your Password"
+                     name="confirm"
+                     [(ngModel)]="user_Profile.confirm1"
+                     #confirm='ngModel'
+              >
+            </div>
+            <div style="text-align: center">
+              <input id="SB" type="submit" [disabled]="updateForm.form.invalid" value="Submit" (click)="submit_change()">
+
+            </div>
+            <hr>
+            <div style="text-align: center">
+              <input type="reset" value="Reset">
+            </div>
+          </form>
+          <hr>
+          <div style="text-align: center">
+            <input type="button" value="Link to FaceBook" (click)="linkfacebook()">
+          </div>
+          <hr>
+          <div style="text-align: center">
+            <input type="button" value="unLink to FaceBook" (click)="unlink()">
+          </div>
+          <hr>
+          <div style="text-align: center">
+            <input type="button" value="Link to Registered account"(click)="toshow()">
+            <div *ngIf="isShow">
+             <textarea placeholder="username" id="linkuser" [(ngModel)]="linkuser"></textarea>
+              <textarea placeholder="password" id = 'linkpsw' [(ngModel)]="linkpsw"></textarea>
+              <input type="button" id="linkconfirm" value="Submit" (click)="merge()">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

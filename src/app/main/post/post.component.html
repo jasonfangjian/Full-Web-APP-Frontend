@@ -1,0 +1,69 @@
+<div class="post_main">
+  <div class="res">
+        <textarea id="post_new" placeholder="Add your post" [(ngModel)]="newPost"></textarea>
+
+        <div class="post_img">
+          <input type="file" accept="image/*" id = 'postImg'>
+        </div>
+
+        <div class="post_btn">
+          <div class="post_btn_add">
+            <button id="share_new_post" class="btn btn-primary" (click)="add_newPost()">Share</button>
+          </div>
+
+          <div class="post_btn_clear">
+            <button class="btn btn-primary" (click)="clear_newPost()">Clear</button>
+          </div>
+
+    </div>
+  </div>
+
+  <div class="cur_post">
+    <div class ='articles' *ngFor="let item of showList, let key = index">
+      <div class="post_for">
+        <h4>{{item.title}}</h4>
+        <div class="row">
+          <div class = "col-md-2">
+            <div *ngIf="item.imgSrc != null" id="pic" class="col-md-2"><img src="{{item.imgSrc}}" alt="img"/></div>
+          </div>
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-md-6">
+             <h6 id="author">Author: {{item.author}}</h6>
+            </div>
+            <div class="col-md-6">
+              <h6>Date: {{item.timeStamp}}</h6>
+            </div>
+          </div>
+           <div style="display:block;word-break: break-all;word-wrap: break-word;">
+          {{item.body}}
+           </div>
+
+          <div class="edit_btn">
+            <button class="btn btn-primary" id="showCom"  (click)="toShow(item)">{{item.buttonValue}}</button>
+            <button class="btn btn-primary" id="comment" (click)="addComment(item)">Comment</button>
+            <button class="btn btn-primary" id="edit" (click)="toEdit(item)">{{item.editButton}}</button>
+          </div>
+          <div *ngIf="item.isEdit">
+            <textarea id="editPost" placeholder="Edit Post" [(ngModel)]="item.editPost"></textarea>
+            <button class="btn btn-primary" id="confirmEdit" (click)="ConfirmEdit(key)">Submit</button>
+          </div>
+          <ul *ngIf="item.isShow">
+            <li *ngFor="let com of item.comments" class="show_comments" >
+              <h6>{{com.username}}:</h6><p >{{com.comment}}</p>
+              <button class="btn btn-primary" id="editCommentButton" (click)="toEditComment(com)">{{com.editCommentButton}}</button>
+              <div *ngIf="com.isShowEdit">
+                <textarea id="editComment" placeholder="Edit Post" [(ngModel)]="com.editComment"></textarea>
+                <button class="btn btn-primary" id="confirmEditComment" (click)="ConfirmEditComment(item,com)">Submit</button>
+              </div>
+            </li>
+          </ul>
+          <div>
+            <textarea id = 'comments' placeholder="Add Comments" [(ngModel)]="item.addComments"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

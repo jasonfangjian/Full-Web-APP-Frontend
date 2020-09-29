@@ -1,0 +1,33 @@
+<div class="main">
+  <div class="page-header">
+    <h1 class="title">RiceBook </h1>
+    <ul class="mainHead">
+      <li><input type="button" value="PROFILE" routerLink="/profile/{{username}}"> </li>
+      <li><input type="button" value="LOG OUT" id="log_out" (click)="log_out()"></li>
+    </ul>
+  </div>
+  <div class="container-fluid">
+  <div class="row">
+  <div class="col-md-2">
+    <app-following  (outer)="add_post($event)"></app-following>
+  </div>
+   <div class="col-md-10">
+       <div class="row">
+         <div class="search_bar">
+           <textarea placeholder="Search" id="search_content" [(ngModel)]="search"></textarea>
+         </div>
+         <div class="search_btn">
+           <button class="search"(click)="do_search()">Search</button>
+         </div>
+         <div class="search_btn">
+           <button class="clear" (click)="clear_search()">Clear</button>
+         </div>
+       </div>
+       <div class="row">
+          <app-post #footerChild></app-post>
+       </div>
+     </div>
+  </div>
+  </div>
+</div>
+

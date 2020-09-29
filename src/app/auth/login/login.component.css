@@ -1,0 +1,38 @@
+input[type="text"] {
+  border-radius: 15px;
+  height: 30px;}
+input[type="password"] {
+  border-radius: 15px;
+  height: 30px;}
+
+input[type=submit]{
+  width:100px;
+  height:36px;
+  line-height:28px;
+  font-size:18px;
+  color:#fff;
+  border:1px solid rgba(14,102,190,0.51);
+  background-color:#369;
+  border-radius:4px;
+}
+input[type=reset]{
+  text-align: center;
+  width:100px;
+  height:36px;
+  line-height:28px;
+  font-size:18px;
+  color:#fff;
+  border:1px solid rgba(14,102,190,0.51);
+  background-color:#369;
+  border-radius:4px;
+}
+input[type=button] {
+  width: 200px;
+  height: 36px;
+  line-height: 28px;
+  font-size: 18px;
+  color: #fff;
+  border: 1px solid rgba(14, 102, 190, 0.51);
+  background-color: #369;
+  border-radius: 4px;
+}

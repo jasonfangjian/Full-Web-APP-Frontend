@@ -1,0 +1,41 @@
+<div class="following_main">
+  <div class="res">
+    <div class="pic">
+      <img src="{{source}}" alt="img"/>
+    </div>
+    <h6 class="username">{{accountname}}</h6>
+    <h6 class="head">"{{headline}}"</h6>
+    <div class="row">
+    <textarea class="change_headline"  [(ngModel)]="changeHead"></textarea>
+    </div>
+    <div class="row">
+      <div class="col-md-12" id="head_btn">
+      <button class="btn btn-primary" id="change_btn" (click)="update_head()">Update</button>
+      </div>
+    </div>
+  </div>
+<div *ngFor="let item of followerList; let key=index;">
+  <div class="res">
+    <div class="pic">
+      <img src="{{item.imgSrc}}" alt="img"/>
+    </div>
+    <h6 class="username">{{item.name}}</h6>
+    <h6 class="head">"{{item.headline}}"</h6>
+    <div class="row">
+      <div class="col-md-12" id="un_btn">
+        <button class="btn btn-primary" id="unfollow_btn" (click)="unfollow(key)">Unfollow</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="res">
+    <div class="row">
+      <textarea class="change_headline"  [(ngModel)]="addname"></textarea>
+    </div>
+    <div class="row">
+      <div class="col-md-12" id="add_btn">
+        <button class="btn btn-primary" id="addFollow_btn" (click)="update_follow()">Add Followers</button>
+      </div>
+    </div>
+  </div>
+</div>
