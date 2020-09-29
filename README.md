@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
 
 ## Go to the Website
-* Url: numerous-rice.surge.sh
+* Url: http://numerous-rice.surge.sh/
 * Test username: jf58
 * Tset password: 123
 
